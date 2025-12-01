@@ -33,6 +33,6 @@ export const USERS: User[] = [
     repo: "aoc2025",
     branch: "main",
     mapToPath: (day, part) =>
-      `pub/{day}/{part.toLowerCase()}.py`,
+      `pub/${day}/${part.toLowerCase()}.py`,
   },
 ];
