@@ -56,34 +56,13 @@ export default function HomeClient({ allCode }: HomeClientProps) {
   // Fetch source code from GitHub on demand
   const fetchSourceCode = useCallback(
     async (username: string, day: number, part: PartType): Promise<string> => {
-      // If we have pre-loaded data, use it
-      if (allCode.length > 0) {
-        const codeData = allCode.find(
-          (c) => c.username === username && c.day === day && c.part === part
-        );
-        if (codeData) return codeData.code;
-      }
-
-      // Otherwise fetch from GitHub
-      const user = USERS.find((u) => u.username === username);
-      if (!user) {
-        return `// User ${username} not found`;
-      }
-
-      try {
-        const path = user.mapToPath(day, part);
-        const url = `https://raw.githubusercontent.com/${username}/${user.repo}/main/${path}`;
-
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          return `// Error fetching file: ${response.statusText}\n// URL: ${url}`;
-        }
-
-        return await response.text();
-      } catch (error) {
-        return `// Error: ${error instanceof Error ? error.message : "Unknown error"}`;
-      }
+      const codeEntry = allCode.find(
+        (entry) =>
+          entry.username === username &&
+          entry.day === day &&
+          entry.part === part
+      );
+      return codeEntry ? codeEntry.code : "// Code not found.";
     },
     [allCode]
   );
