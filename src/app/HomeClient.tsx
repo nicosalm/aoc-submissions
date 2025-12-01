@@ -49,7 +49,7 @@ export default function HomeClient({ allCode }: HomeClientProps) {
       params.set("user", selectedUser.username);
       params.set("part", selectedPart);
       params.set("day", selectedDay.toString());
-      router.push(`?${params.toString()}`, { scroll: false });
+      router.replace(`?${params.toString()}`, { scroll: false });
     }
   }, [selectedUser, selectedPart, selectedDay, router, isInitialized]);
 
