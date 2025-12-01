@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AOC Submission Collection",
+  title: "AdventOfCode Submission Collection",
   description:
-    "A collection of AdventOfCode code submissions for the Undergraduate Project Lab. Compare your solutions with others!",
+    "Compare your solutions with others! A collection of AOC submissions by various members of the UPL & friends.",
 };
 
 export default function RootLayout({
